@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!-- Capitolul 5: suita completa, rulata in paralel (parallel="methods") -->
+<suite name="HapifyMe Suite" parallel="methods" thread-count="8">
+    <listeners>
+        <!-- Transformer-ul verifica fiecare test: retry doar pentru @Retryable -->
+        <listener class-name="ro.hapifyme.utils.AnnotationTransformer"/>
+    </listeners>
+
+    <test name="Regression">
+        <packages>
+            <package name="ro.hapifyme.tests.*"/>
+        </packages>
+    </test>
+</suite>

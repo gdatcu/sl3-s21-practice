@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Capitolul 1.3: src/test/resources/log4j2.xml -->
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Configurare pentru Consola (ce vedem in IDE) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- Pattern: Ora [Thread] Nivel Clasa - Mesaj -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!-- Configurare pentru Fisier (ce ramane salvat) -->
+        <!-- Exercitiul 1.2: schimba append="false" in append="true" -->
+        <File name="File" fileName="logs/test_execution.log" append="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Setam nivelul global la INFO (DEBUG si TRACE vor fi ignorate) -->
+        <!-- Exercitiul 1.1: schimba level="info" in level="debug" -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>

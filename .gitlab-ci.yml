@@ -1,0 +1,54 @@
+# Imaginea Docker oficiala Maven cu Java 21
+image: maven:3.9.6-eclipse-temurin-21
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  ALLURE_VERSION: "2.46.2"   # o schimbi? actualizeaza si ALLURE_URL
+  ALLURE_URL: "https://github.com/allure-framework/allure2/releases/download/2.46.2/allure-2.46.2.zip"
+
+cache:
+  paths:
+    - .m2/repository
+
+stages:
+  - test
+  - report
+
+# JOB 1: Testare
+# HAPIFY_USER / HAPIFY_PASS vin din Settings -> CI/CD -> Variables (Capitolul 4, Pasul 6)
+run_tests:
+  stage: test
+  tags:
+    - qagitlab
+  script:
+    - echo "Rulare teste hapifyMe cu Java 21..."
+    - java -version
+    - mvn clean test
+  allow_failure: true    # Teste picate = job PORTOCALIU, pipeline-ul continua
+  artifacts:
+    when: always
+    paths:
+      - target/allure-results/
+      - logs/
+    reports:
+      junit: target/surefire-reports/TEST-*.xml    # Tab-ul "Tests"
+    expire_in: 1 day
+
+# JOB 2: Raport Allure intr-un singur fisier HTML
+allure_report:
+  stage: report
+  tags:
+    - qagitlab
+  script:
+    - 'ls -la target/allure-results || echo "Artefactele lipsesc"'
+    - 'apt-get update && apt-get install -y wget unzip'
+    - 'wget -q -O allure.zip "$ALLURE_URL"'
+    - 'unzip -q allure.zip -d /opt/'
+    - '/opt/allure-$ALLURE_VERSION/bin/allure generate target/allure-results -o allure-report --clean --single-file'
+  artifacts:
+    paths:
+      - allure-report/
+    expire_in: 7 days
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: always      # Raportul se genereaza chiar daca au picat teste

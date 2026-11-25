@@ -1,0 +1,19 @@
+# Maven
+target/
+
+# Log4j (Capitolul 1)
+logs/
+
+# Allure (daca rezultatele ajung in radacina proiectului)
+allure-results/
+allure-report/
+
+# IntelliJ / VS Code / OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Variabile locale - NU le urcati pe GitHub!
+.env

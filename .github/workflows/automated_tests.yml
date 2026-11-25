@@ -59,6 +59,13 @@ jobs:
           gh_pages: gh-pages
           allure_history: allure-history
 
+      # Pasul 5b: Allure ruleaza in Docker (ca root) si copiaza in raport si folderul .git
+      # din gh-pages. Il stergem, altfel prima publicare pe gh-pages esueaza
+      # ("src refspec gh-pages does not match any").
+      - name: Clean report folder
+        if: always()
+        run: sudo rm -rf allure-history/.git
+
       # Pasul 6: Publica raportul DOAR de pe main (nu din Pull Request-uri)
       - name: Deploy Report to GitHub Pages
         if: always() && github.ref == 'refs/heads/main'

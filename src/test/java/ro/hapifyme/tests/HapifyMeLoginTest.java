@@ -72,7 +72,7 @@ public class HapifyMeLoginTest extends BaseTest {
         // Atasam valoarea exacta in raport pentru claritate
         attachTextToReport("Timp masurat", timeInMs + " ms");
 
-        Assert.assertTrue(timeInMs < 5000,
+        Assert.assertTrue(timeInMs < 4999,
                 "Performanta slaba! Timpul de raspuns (" + timeInMs + "ms) a depasit limita de 2000ms.");
     }
 

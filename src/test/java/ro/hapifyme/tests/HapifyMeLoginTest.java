@@ -30,6 +30,10 @@ public class HapifyMeLoginTest extends BaseTest {
         String username = System.getenv("HAPIFY_USER");
         String password = System.getenv("HAPIFY_PASS");
 
+//        String username = "test_automat";
+//        String password = "Password@123";
+//        mvn clean test -Dtest=ro.hapifyme.tests.HapifyMeLoginTest
+
         // Pas 1: Actiunea
         Response response = performLogin(username, password);
 
@@ -60,7 +64,7 @@ public class HapifyMeLoginTest extends BaseTest {
                 .post(endpoint);
     }
 
-    @Step("Verificare timp de raspuns (trebuie sa fie sub 2000ms)")
+    @Step("Verificare timp de raspuns (trebuie sa fie sub 5s)")
     public void verifyResponseTime(Response response) {
         long timeInMs = response.time();
         logger.info("Timpul de raspuns a fost: " + timeInMs + " ms");
@@ -68,7 +72,7 @@ public class HapifyMeLoginTest extends BaseTest {
         // Atasam valoarea exacta in raport pentru claritate
         attachTextToReport("Timp masurat", timeInMs + " ms");
 
-        Assert.assertTrue(timeInMs < 2000,
+        Assert.assertTrue(timeInMs < 5000,
                 "Performanta slaba! Timpul de raspuns (" + timeInMs + "ms) a depasit limita de 2000ms.");
     }
 

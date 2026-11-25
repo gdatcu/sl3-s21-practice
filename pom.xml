@@ -17,7 +17,7 @@
         <testng.version>7.8.0</testng.version>
         <restassured.version>5.3.1</restassured.version>
         <allure.version>2.24.0</allure.version>
-        <aspectj.version>1.9.22</aspectj.version>
+        <aspectj.version>1.9.22.1</aspectj.version>
 
         <!-- Suita rulata de "mvn test" (poate fi schimbata: mvn test -DsuiteXmlFile=...) -->
         <suiteXmlFile>testng.xml</suiteXmlFile>

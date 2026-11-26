@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","6802","Verifica starea de sanatate a sistemului (Health Check)","HapifyMe Suite","2026-11-26","passed","2026-11-26","ro.hapifyme.tests.SystemHealthTest","Regression","ro.hapifyme.tests.SystemHealthTest","testSystemHealth"
+"","4148","testLoginWithLog4j","HapifyMe Suite","2026-11-26","passed","2026-11-26","ro.hapifyme.tests.LoginTest","Regression","ro.hapifyme.tests.LoginTest","testLoginWithLog4j"
+"","1","Demo Retry: pica la prima incercare, trece la a doua","HapifyMe Suite","2026-11-26","passed","2026-11-26","ro.hapifyme.tests.RetryDemoTest","Regression","ro.hapifyme.tests.RetryDemoTest","flakyOnFirstAttempt"
+"Acest test verifica endpoint-ul POST /auth/login. Se asteapta un token JWT in raspuns.","4769","Validare Login API cu user corect","HapifyMe Suite","2026-11-26","passed","2026-11-26","ro.hapifyme.tests.HapifyMeLoginTest","Regression","ro.hapifyme.tests.HapifyMeLoginTest","testValidLogin"
+"","1","testUserFlowWithStaticToken","HapifyMe Suite","2026-11-26","unknown","2026-11-26","ro.hapifyme.tests.StaticTokenBonusTest","Regression","ro.hapifyme.tests.StaticTokenBonusTest","testUserFlowWithStaticToken"
+"","5192","testUserFlow","HapifyMe Suite","2026-11-26","passed","2026-11-26","ro.hapifyme.tests.ThreadSafeTest","Regression","ro.hapifyme.tests.ThreadSafeTest","testUserFlow"
